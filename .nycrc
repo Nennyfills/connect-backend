@@ -1,0 +1,24 @@
+{
+  "require": [
+    "@babel/register",
+    "regenerator-runtime/runtime"
+    ],
+  "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ],
+  "exclude": [
+    "src/models/index.js",
+    "src/sequelize.js",
+    "tests/**/*",
+    "config/db/*"
+  ],
+  "check-coverage": false,
+  "lines": 90,
+  "statements": 90,
+  "functions": 90,
+  "branches": 90,
+  "sourceMap": false,
+  "instrument": false
+}

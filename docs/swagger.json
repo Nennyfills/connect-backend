@@ -1,0 +1,53 @@
+{
+  "info": {
+    "title": "connect",
+    "version": "1.0.0",
+    "description": "Connect is an application that aids two or more individual share information among themselves.",
+    "termsOfService": "",
+    "contact": {
+      "email": ""
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/api/v1",
+  "swagger": "2.0",
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "description": "Signup to the application",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName or email",
+            "description": "Username or email to use for login.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "User's password.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "token is supplied"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

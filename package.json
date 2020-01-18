@@ -1,0 +1,89 @@
+{
+  "name": "connect-backend",
+  "version": "1.0.0",
+  "description": "connecting friends",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "dev:build": "docker-compose -f docker-compose.yml -f docker-compose-dev.yml build",
+    "dev:up": "docker-compose -f docker-compose.yml -f docker-compose-dev.yml up",
+    "prod:build": "docker-compose -f docker-compose.yml -f docker-compose-prod.yml build",
+    "prod:up": "docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d",
+    "db:migrate": "sequelize db:migrate",
+    "db:rollback": "npm run db:undo && npm run db:migrate && npm run db:seed",
+    "db:seed": "npm run sequelize db:seed:all",
+    "db:undo": "npm run sequelize db:migrate:undo:all",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "eslint": "eslint --init",
+    "generate:doc": "npm run build && swagger-jsdoc -d dist/swagger.js  -o ./docs/swagger.json",
+    "lint": "eslint \"**/*.js\" --fix",
+    "sequelize-cli:es6": "sequelize $*",
+    "start": "node dist/index.js",
+    "start:dev": "cross-env DEBUG=dev nodemon --exec babel-node src/index.js",
+    "start:debug": "cross-env DEBUG=dev nodemon --inspect --exec babel-node src/index.js",
+    "sync-env": "sync-dotenv",
+    "test": "mocha --require @babel/register --require regenerator-runtime/runtime tests/test.js --exit",
+    "test:coverage": "nyc npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nennyfills/connect-backend.git"
+  },
+  "author": "Nenny Dike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nennyfills/connect-backend/issues"
+  },
+  "homepage": "https://github.com/Nennyfills/connect-backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.8.0",
+    "@babel/node": "^7.8.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.0",
+    "@babel/plugin-transform-runtime": "^7.8.0",
+    "@babel/preset-env": "^7.8.0",
+    "@babel/runtime": "^7.8.0",
+    "@hapi/joi": "^17.0.2",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-istanbul": "^6.0.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "pg": "^7.17.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.3",
+    "socket.io": "^2.3.0",
+    "swagger-jsdoc": "^3.5.0",
+    "swagger-ui-express": "^4.1.2",
+    "sync-dotenv": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.8.3",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.9",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "husky": "^4.0.7",
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0",
+    "sequelize-cli": "^5.5.1",
+    "sinon": "^8.0.4",
+    "sinon-chai": "^3.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run sync-env && npm run lint && npm run generate:doc"
+    }
+  }
+}

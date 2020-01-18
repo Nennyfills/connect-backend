@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: connect-dev
+    command: npm run db:migrate
+    build:
+      context: .
+      dockerfile: DockerFile-dev
+    volumes:
+      - .:/app
+    ports:
+      - 4000:4000
+    env_file: .env
+    environment:
+      - NODE_ENV=development
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_TEST_URL=${DATABASE_TEST_URL}
+      - CHOKIDAR_USEPOLLING=true
+  # postgres:
+  #   image: postgres:9.6.2-alpine
+  #   environment:
+  #     POSTGRES_USER: connectapp
+  #     POSTGRES_DB: connect

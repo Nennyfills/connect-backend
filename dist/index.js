@@ -19,6 +19,8 @@ var _cors = _interopRequireDefault(require("cors"));
 
 var _debug = _interopRequireDefault(require("debug"));
 
+var _passport = _interopRequireDefault(require("passport"));
+
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 
 var _morgan = _interopRequireDefault(require("morgan"));
@@ -27,9 +29,11 @@ var _routes = _interopRequireDefault(require("./routes"));
 
 var _swagger = _interopRequireDefault(require("../docs/swagger.json"));
 
+var _errorHandler = _interopRequireDefault(require("./middlewares/errorHandler"));
+
 function cov_226l1t3lox() {
   var path = "C:\\Users\\chinenye.dike\\Documents\\workspace\\connect-backend\\src\\index.js";
-  var hash = "ad0c687aeeef218646458eb47241aa0fc802db31";
+  var hash = "327dbc7c592f5cd72a09c2ad342dcecca7fe319b";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -37,171 +41,191 @@ function cov_226l1t3lox() {
     statementMap: {
       "0": {
         start: {
-          line: 17,
+          line: 18,
           column: 0
         },
         end: {
-          line: 17,
+          line: 18,
           column: 9
         }
       },
       "1": {
         start: {
-          line: 18,
+          line: 20,
           column: 14
         },
         end: {
-          line: 18,
+          line: 20,
           column: 26
         }
       },
       "2": {
         start: {
-          line: 19,
+          line: 21,
           column: 17
         },
         end: {
-          line: 19,
+          line: 21,
           column: 28
         }
       },
       "3": {
         start: {
-          line: 20,
+          line: 22,
           column: 12
         },
         end: {
-          line: 20,
+          line: 22,
           column: 21
         }
       },
       "4": {
         start: {
-          line: 22,
+          line: 24,
           column: 0
         },
         end: {
-          line: 22,
+          line: 24,
           column: 16
         }
       },
       "5": {
         start: {
-          line: 23,
+          line: 25,
           column: 0
         },
         end: {
-          line: 23,
+          line: 25,
           column: 41
         }
       },
       "6": {
         start: {
-          line: 24,
+          line: 26,
           column: 0
         },
         end: {
-          line: 24,
+          line: 26,
           column: 16
         }
       },
       "7": {
         start: {
-          line: 25,
+          line: 27,
           column: 0
         },
         end: {
-          line: 25,
+          line: 27,
           column: 23
         }
       },
       "8": {
         start: {
-          line: 35,
+          line: 28,
           column: 0
         },
         end: {
-          line: 35,
-          column: 27
+          line: 28,
+          column: 31
         }
       },
       "9": {
         start: {
-          line: 36,
+          line: 29,
           column: 0
         },
         end: {
-          line: 36,
-          column: 70
+          line: 29,
+          column: 27
         }
       },
       "10": {
         start: {
-          line: 38,
+          line: 30,
           column: 0
         },
         end: {
-          line: 43,
-          column: 3
+          line: 30,
+          column: 70
         }
       },
       "11": {
         start: {
-          line: 39,
-          column: 2
+          line: 32,
+          column: 0
         },
         end: {
-          line: 42,
-          column: 5
+          line: 37,
+          column: 3
         }
       },
       "12": {
         start: {
-          line: 45,
-          column: 0
+          line: 33,
+          column: 2
         },
         end: {
-          line: 50,
-          column: 3
+          line: 36,
+          column: 5
         }
       },
       "13": {
         start: {
-          line: 46,
-          column: 2
+          line: 39,
+          column: 0
         },
         end: {
-          line: 49,
-          column: 5
+          line: 44,
+          column: 3
         }
       },
       "14": {
         start: {
-          line: 54,
-          column: 15
+          line: 40,
+          column: 2
         },
         end: {
-          line: 54,
-          column: 37
+          line: 43,
+          column: 5
         }
       },
       "15": {
         start: {
-          line: 58,
+          line: 46,
           column: 0
         },
         end: {
-          line: 58,
-          column: 67
+          line: 46,
+          column: 22
         }
       },
       "16": {
         start: {
-          line: 58,
+          line: 48,
+          column: 15
+        },
+        end: {
+          line: 48,
+          column: 37
+        }
+      },
+      "17": {
+        start: {
+          line: 52,
+          column: 0
+        },
+        end: {
+          line: 52,
+          column: 67
+        }
+      },
+      "18": {
+        start: {
+          line: 52,
           column: 26
         },
         end: {
-          line: 58,
+          line: 52,
           column: 65
         }
       }
@@ -211,73 +235,73 @@ function cov_226l1t3lox() {
         name: "(anonymous_0)",
         decl: {
           start: {
-            line: 38,
+            line: 32,
             column: 13
           },
           end: {
-            line: 38,
+            line: 32,
             column: 14
           }
         },
         loc: {
           start: {
-            line: 38,
+            line: 32,
             column: 36
           },
           end: {
-            line: 43,
+            line: 37,
             column: 1
           }
         },
-        line: 38
+        line: 32
       },
       "1": {
         name: "(anonymous_1)",
         decl: {
           start: {
-            line: 45,
+            line: 39,
             column: 13
           },
           end: {
-            line: 45,
+            line: 39,
             column: 14
           }
         },
         loc: {
           start: {
-            line: 45,
+            line: 39,
             column: 36
           },
           end: {
-            line: 50,
+            line: 44,
             column: 1
           }
         },
-        line: 45
+        line: 39
       },
       "2": {
         name: "(anonymous_2)",
         decl: {
           start: {
-            line: 58,
+            line: 52,
             column: 20
           },
           end: {
-            line: 58,
+            line: 52,
             column: 21
           }
         },
         loc: {
           start: {
-            line: 58,
+            line: 52,
             column: 26
           },
           end: {
-            line: 58,
+            line: 52,
             column: 65
           }
         },
-        line: 58
+        line: 52
       }
     },
     branchMap: {},
@@ -298,7 +322,9 @@ function cov_226l1t3lox() {
       "13": 0,
       "14": 0,
       "15": 0,
-      "16": 0
+      "16": 0,
+      "17": 0,
+      "18": 0
     },
     f: {
       "0": 0,
@@ -307,7 +333,7 @@ function cov_226l1t3lox() {
     },
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "ad0c687aeeef218646458eb47241aa0fc802db31"
+    hash: "327dbc7c592f5cd72a09c2ad342dcecca7fe319b"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -324,8 +350,8 @@ function cov_226l1t3lox() {
   return actualCoverage;
 }
 
+cov_226l1t3lox();
 cov_226l1t3lox().s[0]++;
-// import errorHandler from './middlewares/errorHandler';
 // import socketIO from './socket';
 // import './services/cron';
 (0, _dotenv.config)();
@@ -343,44 +369,39 @@ app.use((0, _express.urlencoded)({
 cov_226l1t3lox().s[6]++;
 app.use((0, _cors.default)());
 cov_226l1t3lox().s[7]++;
-app.use((0, _morgan.default)('dev')); // app.use(passport.initialize());
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: true,
-//     saveUninitialized: true,
-//   }),
-// );
-
+app.use((0, _morgan.default)('dev'));
 cov_226l1t3lox().s[8]++;
-app.use('/api/v1', _routes.default);
+app.use(_passport.default.initialize());
 cov_226l1t3lox().s[9]++;
-app.use('/api/v1/docs', _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default));
+app.use('/api/v1', _routes.default);
 cov_226l1t3lox().s[10]++;
+app.use('/api/v1/docs', _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default));
+cov_226l1t3lox().s[11]++;
 app.get('/', (request, response) => {
   cov_226l1t3lox().f[0]++;
-  cov_226l1t3lox().s[11]++;
+  cov_226l1t3lox().s[12]++;
   response.status(200).json({
     status: 'success',
     message: 'Welcome to connect'
   });
 });
-cov_226l1t3lox().s[12]++;
+cov_226l1t3lox().s[13]++;
 app.all('*', (request, response) => {
   cov_226l1t3lox().f[1]++;
-  cov_226l1t3lox().s[13]++;
+  cov_226l1t3lox().s[14]++;
   response.status(404).json({
     status: 'error',
     error: 'Not Found'
   });
-}); // app.use(errorHandler);
-
-const server = (cov_226l1t3lox().s[14]++, _http.default.createServer(app)); // socketIO(server);
-
+});
 cov_226l1t3lox().s[15]++;
+app.use(_errorHandler.default);
+const server = (cov_226l1t3lox().s[16]++, _http.default.createServer(app)); // socketIO(server);
+
+cov_226l1t3lox().s[17]++;
 server.listen(PORT, () => {
   cov_226l1t3lox().f[2]++;
-  cov_226l1t3lox().s[16]++;
+  cov_226l1t3lox().s[18]++;
   return debug(`Server started on port ${PORT}`);
 });
 var _default = server;

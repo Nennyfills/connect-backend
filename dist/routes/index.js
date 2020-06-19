@@ -66,6 +66,7 @@ function cov_khnjl92ta() {
   return actualCoverage;
 }
 
+cov_khnjl92ta();
 const router = (cov_khnjl92ta().s[0]++, (0, _express.Router)());
 cov_khnjl92ta().s[1]++;
 router.use('/auth', _auth.default);

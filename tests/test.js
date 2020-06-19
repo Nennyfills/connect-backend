@@ -1,2 +1,4 @@
 import './app.spec';
-import './auth';
+import './service';
+import './middleware';
+import './routes';

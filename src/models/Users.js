@@ -15,14 +15,19 @@ export default class Users extends Model {
       primaryKey: true,
       defaultValue: Sequelize.UUIDV4
     },
+    googleId: Sequelize.STRING,
+    githubId: Sequelize.STRING,
     fullName: Sequelize.STRING,
     email: Sequelize.STRING,
     userName: Sequelize.STRING,
     password: Sequelize.STRING,
     bio: Sequelize.STRING,
     phoneNumber: Sequelize.STRING,
-    avatarURL: Sequelize.STRING,
+    avatarUrl: Sequelize.STRING,
     signature: Sequelize.STRING,
+    isVerified: Sequelize.BOOLEAN,
+    resetPasswordToken: Sequelize.STRING,
+    verificationToken: Sequelize.STRING,
   }
 
   /**
@@ -41,87 +46,24 @@ export default class Users extends Model {
     return model;
   }
 
-  //   /**
-  //    * Model associations
-  //    *
-  //    * @static
-  //    * @memberof Users
-  //    *
-  //    * @param {any} models all models
-  //    *
-  //    * @returns {void} no return
-  //    */
-  //   static associate(models) {
-  //     Users.belongsTo(models.Articles, {
-  //       as: 'article',
-  //       foreignKey: 'articleId',
-  //       onDelete: 'CASCADE'
-  //     });
-  //     Users.belongsTo(models.Categories, {
-  //       as: 'tag',
-  //       foreignKey: 'categoryId',
-  //       onDelete: 'CASCADE'
-  //     });
-  //     Users.belongsTo(models.Users, {
-  //       foreignKey: 'authorId',
-  //       as: 'author',
-  //       onDelete: 'CASCADE'
-  //     });
-  //   }
+  /**
+   * Get existing user
+   *
+   * @static
+   * @memberof Users
+   *
+   * @param {string} queryString - string to sort in the database
+   * @param {string} column - column to search
+   *
+   * @returns {Object | void} - details of existing user
+   */
+  static async getExistingUser(queryString, column = 'email') {
+    const user = await Users.findOne({
+      where: {
+        [column]: queryString
+      }
+    });
 
-  //   /**
-  //  * destroys all tags for given article
-  //  *
-  //  * @function
-  //  *
-  //  * @param {uuid} id - id of the article to which tags belong
-  //  *
-  //  * @returns {void} - returns nothing
-  //  */
-  //   static async deleteTags(id) {
-  //     await Users.destroy({
-  //       returning: true,
-  //       where: {
-  //         articleId: id
-  //       }
-  //     });
-  //   }
-
-  //   /**
-  //  * creates tags for given article
-  //  *
-  //  * @function
-  //  *
-  //  * @param {Object} tag - tags to be created
-  //  * @param {uuid} id - id of the article to which tags belong
-  //  * @param {uuid} authorId - id of the author
-  //  *
-  //  * @returns {Array} - array
-  //  */
-  //   static async createTags(tag, id, authorId) {
-  //     const tags = tag.map((eachTag) => ({
-  //       articleId: id,
-  //       categoryId: eachTag,
-  //       authorId
-  //     }));
-  //     const response = await Users.bulkCreate(tags);
-  //     const createdTags = response.map((eachTag) => eachTag.dataValues.categoryId);
-  //     return createdTags;
-  //   }
-
-//   /**
-//    * Finds all tags belonging to an article
-//    *
-//    * @function
-//    *
-//    * @param {string} articleId - id of the article to which tags belong
-//    *
-//    * @returns {Array} - array
-//    */
-//   static async findTags(articleId) {
-//     const tags = await Users.findAll({
-//       where: { articleId }
-//     });
-//     return tags;
-//   }
+    return user;
+  }
 }

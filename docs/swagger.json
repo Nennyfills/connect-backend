@@ -17,7 +17,7 @@
   "paths": {
     "/auth/login": {
       "post": {
-        "description": "Signup to the application",
+        "description": "login to the application",
         "produces": [
           "application/json"
         ],
@@ -39,7 +39,198 @@
         ],
         "responses": {
           "200": {
-            "description": "token is supplied"
+            "description": "token is supplied and user is logged in."
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "description": "Signup to the application",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "user's email.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "description": "user's userName.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "User's password.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "token is supplied and user is created."
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "description": "Authenticate user using google",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "description": "Authenticate user using third party google account",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accessToken",
+            "description": "User access token gotten from either google.",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/auth/github": {
+      "get": {
+        "description": "Authenticate user using google",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/auth/reset/password": {
+      "post": {
+        "description": "reset password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "password",
+            "description": "User's password.",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "default": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password is changed."
+          }
+        }
+      }
+    },
+    "/auth/reset/password/link": {
+      "post": {
+        "description": "send reset password link",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "User reset password token.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An email has been sent to the owners email with further information."
+          }
+        }
+      }
+    },
+    "/auth/reset/password/:token": {
+      "post": {
+        "description": "reset password using link",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isVerified",
+            "description": "verify user.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "description": "User's verification token.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password is changed."
+          }
+        }
+      }
+    },
+    "/auth/verify/link": {
+      "post": {
+        "description": "send verify link",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "User verify token.",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An email has been sent to the owners email with further information."
           }
         }
       }

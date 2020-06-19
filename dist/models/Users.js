@@ -13,7 +13,7 @@ var _sequelize = require("sequelize");
 
 function cov_17shzxsfdj() {
   var path = "C:\\Users\\chinenye.dike\\Documents\\workspace\\connect-backend\\src\\models\\Users.js";
-  var hash = "fddd83c800449e6732cbc4ddd18fab3f66002866";
+  var hash = "8b6d146a094e24ecf449a1f3d1a48a2c0620b859";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -25,28 +25,48 @@ function cov_17shzxsfdj() {
           column: 23
         },
         end: {
-          line: 26,
+          line: 31,
           column: 3
         }
       },
       "1": {
         start: {
-          line: 39,
+          line: 44,
           column: 18
         },
         end: {
-          line: 39,
+          line: 44,
           column: 62
         }
       },
       "2": {
         start: {
-          line: 41,
+          line: 46,
           column: 4
         },
         end: {
-          line: 41,
+          line: 46,
           column: 17
+        }
+      },
+      "3": {
+        start: {
+          line: 61,
+          column: 17
+        },
+        end: {
+          line: 65,
+          column: 6
+        }
+      },
+      "4": {
+        start: {
+          line: 67,
+          column: 4
+        },
+        end: {
+          line: 67,
+          column: 16
         }
       }
     },
@@ -55,39 +75,93 @@ function cov_17shzxsfdj() {
         name: "(anonymous_0)",
         decl: {
           start: {
-            line: 38,
+            line: 43,
             column: 2
           },
           end: {
-            line: 38,
+            line: 43,
             column: 3
           }
         },
         loc: {
           start: {
-            line: 38,
+            line: 43,
             column: 25
           },
           end: {
-            line: 42,
+            line: 47,
             column: 3
           }
         },
-        line: 38
+        line: 43
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 60,
+            column: 2
+          },
+          end: {
+            line: 60,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 60,
+            column: 62
+          },
+          end: {
+            line: 68,
+            column: 3
+          }
+        },
+        line: 60
       }
     },
-    branchMap: {},
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 60,
+            column: 44
+          },
+          end: {
+            line: 60,
+            column: 60
+          }
+        },
+        type: "default-arg",
+        locations: [{
+          start: {
+            line: 60,
+            column: 53
+          },
+          end: {
+            line: 60,
+            column: 60
+          }
+        }],
+        line: 60
+      }
+    },
     s: {
       "0": 0,
       "1": 0,
-      "2": 0
+      "2": 0,
+      "3": 0,
+      "4": 0
     },
     f: {
-      "0": 0
+      "0": 0,
+      "1": 0
     },
-    b: {},
+    b: {
+      "0": [0]
+    },
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "fddd83c800449e6732cbc4ddd18fab3f66002866"
+    hash: "8b6d146a094e24ecf449a1f3d1a48a2c0620b859"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -103,6 +177,8 @@ function cov_17shzxsfdj() {
 
   return actualCoverage;
 }
+
+cov_17shzxsfdj();
 
 /**
  * Model class for Users
@@ -130,87 +206,30 @@ class Users extends _sequelize.Model {
     }));
     cov_17shzxsfdj().s[2]++;
     return model;
-  } //   /**
-  //    * Model associations
-  //    *
-  //    * @static
-  //    * @memberof Users
-  //    *
-  //    * @param {any} models all models
-  //    *
-  //    * @returns {void} no return
-  //    */
-  //   static associate(models) {
-  //     Users.belongsTo(models.Articles, {
-  //       as: 'article',
-  //       foreignKey: 'articleId',
-  //       onDelete: 'CASCADE'
-  //     });
-  //     Users.belongsTo(models.Categories, {
-  //       as: 'tag',
-  //       foreignKey: 'categoryId',
-  //       onDelete: 'CASCADE'
-  //     });
-  //     Users.belongsTo(models.Users, {
-  //       foreignKey: 'authorId',
-  //       as: 'author',
-  //       onDelete: 'CASCADE'
-  //     });
-  //   }
-  //   /**
-  //  * destroys all tags for given article
-  //  *
-  //  * @function
-  //  *
-  //  * @param {uuid} id - id of the article to which tags belong
-  //  *
-  //  * @returns {void} - returns nothing
-  //  */
-  //   static async deleteTags(id) {
-  //     await Users.destroy({
-  //       returning: true,
-  //       where: {
-  //         articleId: id
-  //       }
-  //     });
-  //   }
-  //   /**
-  //  * creates tags for given article
-  //  *
-  //  * @function
-  //  *
-  //  * @param {Object} tag - tags to be created
-  //  * @param {uuid} id - id of the article to which tags belong
-  //  * @param {uuid} authorId - id of the author
-  //  *
-  //  * @returns {Array} - array
-  //  */
-  //   static async createTags(tag, id, authorId) {
-  //     const tags = tag.map((eachTag) => ({
-  //       articleId: id,
-  //       categoryId: eachTag,
-  //       authorId
-  //     }));
-  //     const response = await Users.bulkCreate(tags);
-  //     const createdTags = response.map((eachTag) => eachTag.dataValues.categoryId);
-  //     return createdTags;
-  //   }
-  //   /**
-  //    * Finds all tags belonging to an article
-  //    *
-  //    * @function
-  //    *
-  //    * @param {string} articleId - id of the article to which tags belong
-  //    *
-  //    * @returns {Array} - array
-  //    */
-  //   static async findTags(articleId) {
-  //     const tags = await Users.findAll({
-  //       where: { articleId }
-  //     });
-  //     return tags;
-  //   }
+  }
+  /**
+   * Get existing user
+   *
+   * @static
+   * @memberof Users
+   *
+   * @param {string} queryString - string to sort in the database
+   * @param {string} column - column to search
+   *
+   * @returns {Object | void} - details of existing user
+   */
 
+
+  static async getExistingUser(queryString, column = (cov_17shzxsfdj().b[0][0]++, 'email')) {
+    cov_17shzxsfdj().f[1]++;
+    const user = (cov_17shzxsfdj().s[3]++, await Users.findOne({
+      where: {
+        [column]: queryString
+      }
+    }));
+    cov_17shzxsfdj().s[4]++;
+    return user;
+  }
 
 }
 
@@ -221,13 +240,18 @@ exports.default = Users;
     primaryKey: true,
     defaultValue: _sequelize.Sequelize.UUIDV4
   },
+  googleId: _sequelize.Sequelize.STRING,
+  githubId: _sequelize.Sequelize.STRING,
   fullName: _sequelize.Sequelize.STRING,
   email: _sequelize.Sequelize.STRING,
   userName: _sequelize.Sequelize.STRING,
   password: _sequelize.Sequelize.STRING,
   bio: _sequelize.Sequelize.STRING,
   phoneNumber: _sequelize.Sequelize.STRING,
-  avatarURL: _sequelize.Sequelize.STRING,
-  signature: _sequelize.Sequelize.STRING
+  avatarUrl: _sequelize.Sequelize.STRING,
+  signature: _sequelize.Sequelize.STRING,
+  isVerified: _sequelize.Sequelize.BOOLEAN,
+  resetPasswordToken: _sequelize.Sequelize.STRING,
+  verificationToken: _sequelize.Sequelize.STRING
 }));
 module.exports = exports.default;

@@ -70,6 +70,7 @@ function cov_1oortdxgqv() {
   return actualCoverage;
 }
 
+cov_1oortdxgqv();
 const routesPath = (cov_1oortdxgqv().s[0]++, _path.default.resolve(process.cwd(), __dirname, 'routes/*.js'));
 const config = (cov_1oortdxgqv().s[1]++, {
   info: {

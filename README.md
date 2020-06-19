@@ -10,7 +10,7 @@ Connect is an application that aids two or more individual share information amo
 ## API Spec
 The preferred JSON object to be returned by the API should be structured as follows:
 
-### Userss (for authentication)
+### Users (for authentication)
 
 ```source-json
 {
@@ -79,7 +79,7 @@ Required fields: `email`, `password`
 
 ### Registration:
 
-`POST /api/Users`
+`POST /api/Users/signup`
 
 Example request body:
 

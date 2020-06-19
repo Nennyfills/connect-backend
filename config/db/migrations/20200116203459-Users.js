@@ -12,18 +12,26 @@ export default {
           type: Sequelize.UUID,
           defaultValue: Sequelize.UUIDV4
         },
+        googleId: {
+          allowNull: true,
+          type: Sequelize.STRING
+        },
+        githubId: {
+          allowNull: true,
+          type: Sequelize.STRING
+        },
         fullName: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.STRING
         },
         userName: {
-          allowNull: true,
+          allowNull: false,
           type: Sequelize.STRING,
           unique: true
         },
         bio: {
           allowNull: true,
-          type: Sequelize.TEXT,
+          type: Sequelize.TEXT
         },
         email: {
           allowNull: false,
@@ -35,15 +43,27 @@ export default {
           type: Sequelize.STRING
         },
         phoneNumber: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.STRING
         },
         signature: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.STRING
         },
-
         avatarUrl: {
+          allowNull: true,
+          type: Sequelize.STRING
+        },
+        isVerified: {
+          allowNull: false,
+          type: Sequelize.BOOLEAN
+        },
+        resetPasswordToken: {
+          allowNull: true,
+          type: Sequelize.STRING
+        },
+        verificationToken: {
+          allowNull: true,
           type: Sequelize.STRING
         },
         createdAt: {
